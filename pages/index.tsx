@@ -2,30 +2,33 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
-import { GetStaticProps } from "next";
+import { GetStaticProps, GetServerSideProps } from "next";
 import { getPostData } from "../lib/posts";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = await getPostData();
+  const { data } = await getPostData();
 
   return {
     props: {
-      allPostsData,
+      data,
     },
   };
 };
 
 export default function Home(props: any) {
-  const { allPostsData } = props;
+  const { data } = props;
 
   return (
     <>
       <div>
-        {allPostsData.map(({ id, title, body }: any) => (
+        {data.map(({ id, title, body }: any) => (
           <div key={id}>
-            <h1>{title}</h1>
+            <Link href={`posts/${id}`}>
+              <h1>{title}</h1>
+            </Link>
             <p>{body}</p>
           </div>
         ))}
