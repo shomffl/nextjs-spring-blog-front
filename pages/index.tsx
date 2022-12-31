@@ -24,6 +24,7 @@ export default function Home(props: any) {
   return (
     <>
       <div>
+        <Link href="/posts/create">CREATE</Link>
         {data.map(({ id, title, body }: any) => (
           <div key={id}>
             <Link href={`posts/${id}`}>
