@@ -15,6 +15,7 @@ export const getPostById = async (id: any) => {
   return postData;
 };
 
+//全postデータのid取得処理
 export const getAllPostIds = async () => {
   const postData = await axios.get(`${API_URL}/api/posts`);
   return postData.data.map(({ id }: any) => {
@@ -24,4 +25,11 @@ export const getAllPostIds = async () => {
       },
     };
   });
+};
+
+//post送信処理
+export const sendPost = async (e: any, data: any) => {
+  e.preventDefault();
+  const response = await axios.post(`${API_URL}/api/posts`, data);
+  return response;
 };
