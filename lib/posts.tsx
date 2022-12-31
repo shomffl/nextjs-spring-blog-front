@@ -27,9 +27,16 @@ export const getAllPostIds = async () => {
   });
 };
 
-//post送信処理
+//post保存処理
 export const sendPost = async (e: any, data: any) => {
   e.preventDefault();
   const response = await axios.post(`${API_URL}/api/posts`, data);
+  return response;
+};
+
+//post編集処理
+export const editPost = async (e: any, id: any, data: any) => {
+  e.preventDefault();
+  const response = await axios.put(`${API_URL}/api/posts/edit/${id}`, data);
   return response;
 };
