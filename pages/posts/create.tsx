@@ -13,8 +13,6 @@ const Create = () => {
   const handleSendPost = async (e: any) => {
     const response = await sendPost(e, post);
 
-    console.log(response);
-
     router.push("/");
   };
 

@@ -40,3 +40,8 @@ export const editPost = async (e: any, id: any, data: any) => {
   const response = await axios.put(`${API_URL}/api/posts/edit/${id}`, data);
   return response;
 };
+
+//post削除処理
+export const deletePost = async (id: any) => {
+  await axios.delete(`${API_URL}/api/posts/${id}`);
+};
