@@ -4,6 +4,7 @@ import { getAllPostIds, getPostById } from "../../lib/posts";
 
 import { GetStaticPaths } from "next";
 import Link from "next/link";
+import { Layout } from "../../components/Layout";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllPostIds();
@@ -26,12 +27,12 @@ const Show = (props: any) => {
   const { data } = props;
 
   return (
-    <div>
+    <Layout>
       <h1>{data.title}</h1>
       <p>{data.body}</p>
       <Link href={`/posts/edit/${data.id}`}>編集</Link>
       <Link href={`/`}>ホームへ戻る</Link>
-    </div>
+    </Layout>
   );
 };
 

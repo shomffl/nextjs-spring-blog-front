@@ -6,6 +6,7 @@ import { GetStaticProps, GetServerSideProps } from "next";
 import { deletePost, getPostData } from "../lib/posts";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
+import { Layout } from "../components/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,19 +30,17 @@ export default function Home(props: any) {
   };
 
   return (
-    <>
-      <div>
-        <Link href="/posts/create">CREATE</Link>
-        {data.map(({ id, title, body }: any) => (
-          <div key={id}>
-            <Link href={`posts/${id}`}>
-              <h1>{title}</h1>
-            </Link>
-            <p>{body}</p>
-            <button onClick={() => handleDeletePost(id)}>削除</button>
-          </div>
-        ))}
-      </div>
-    </>
+    <Layout>
+      <Link href="/posts/create">CREATE</Link>
+      {data.map(({ id, title, body }: any) => (
+        <div key={id}>
+          <Link href={`posts/${id}`}>
+            <h1>{title}</h1>
+          </Link>
+          <p>{body}</p>
+          <button onClick={() => handleDeletePost(id)}>削除</button>
+        </div>
+      ))}
+    </Layout>
   );
 }
