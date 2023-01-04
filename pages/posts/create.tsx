@@ -2,22 +2,27 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { sendPost } from "../../lib/posts";
 import { useRouter } from "next/router";
+import { Layout } from "../../components/Layout";
 
 const Create = () => {
   const [post, setPost] = useState<any>({
     title: "",
     body: "",
   });
+
   const router = useRouter();
 
   const handleSendPost = async (e: any) => {
-    const response = await sendPost(e, post);
-
-    router.push("/");
+    try {
+      const response = await sendPost(e, post);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <div>
+    <Layout>
       <form onSubmit={handleSendPost}>
         <div>
           <span>title : </span>
@@ -38,7 +43,7 @@ const Create = () => {
         <button>send</button>
       </form>
       <Link href={`/`}>ホームへ戻る</Link>
-    </div>
+    </Layout>
   );
 };
 
