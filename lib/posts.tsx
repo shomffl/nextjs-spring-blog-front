@@ -28,8 +28,7 @@ export const getAllPostIds = async () => {
 };
 
 //post保存処理
-export const sendPost = async (e: any, data: any) => {
-  e.preventDefault();
+export const sendPost = async (data: any) => {
   const response = await axios.post(`${API_URL}/api/posts`, data);
   return response;
 };
