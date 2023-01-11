@@ -27,24 +27,35 @@ const Create = () => {
 
   return (
     <Layout>
+      <Link className="underline" href={`/`}>
+        ホームへ戻る
+      </Link>
+
       <form onSubmit={handleSubmit(onsubmit)}>
-        <div>
-          <span>title : </span>
-          <input
-            {...register("title", { required: "titleを入力してください" })}
-          />
-          <p>{errors.title?.message}</p>
+        <div className="mx-32 mt-10 px-10 bg-white rounded-md shadow-md">
+          <div className="flex gap-1 pt-10">
+            <span>title：&nbsp;&nbsp;</span>
+            <input
+              className="w-full border border-black rounded"
+              {...register("title", { required: "titleを入力してください" })}
+            />
+          </div>
+          <p className="text-red-600 font-bold">{errors.title?.message}</p>
+          <div className="flex gap-1 pt-5">
+            <span>body：</span>
+            <textarea
+              className="w-full border border-black rounded"
+              {...register("body", { required: "bodyを入力してください" })}
+            ></textarea>
+          </div>
+          <p className="text-red-600 font-bold">{errors.body?.message}</p>
+          <div className="pt-10 pb-5">
+            <button className="px-4 py-1 border-b-4 border-black active:scale-95 active:border-opacity-10 bg-blue-900 text-white flex ml-auto">
+              send
+            </button>
+          </div>
         </div>
-        <div>
-          <span>body : </span>
-          <input
-            {...register("body", { required: "bodyを入力してください" })}
-          />
-          <p>{errors.body?.message}</p>
-        </div>
-        <button>send</button>
       </form>
-      <Link href={`/`}>ホームへ戻る</Link>
     </Layout>
   );
 };
