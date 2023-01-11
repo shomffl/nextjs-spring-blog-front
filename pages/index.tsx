@@ -32,15 +32,25 @@ export default function Home(props: any) {
   return (
     <Layout>
       <Link href="/posts/create">CREATE</Link>
-      {data.map(({ id, title, body }: any) => (
-        <div key={id}>
-          <Link href={`posts/${id}`}>
-            <h1>{title}</h1>
-          </Link>
-          <p>{body}</p>
-          <button onClick={() => handleDeletePost(id)}>削除</button>
-        </div>
-      ))}
+      <div className="grid grid-cols-4 gap-4">
+        {data.map(({ id, title, body }: any) => (
+          <div
+            key={id}
+            className="px-4 pb-4 rounded-xl shadow-md border border-gray-300 bg-white"
+          >
+            <button
+              className="pt-2 flex ml-auto"
+              onClick={() => handleDeletePost(id)}
+            >
+              ×
+            </button>
+            <Link href={`posts/${id}`}>
+              <h2>{title}</h2>
+            </Link>
+            <p className="text-sm">{body}</p>
+          </div>
+        ))}
+      </div>
     </Layout>
   );
 }
