@@ -50,9 +50,7 @@ const Create = () => {
           </div>
           <p className="text-red-600 font-bold">{errors.body?.message}</p>
           <div className="pt-10 pb-5">
-            <button className="px-4 py-1 border-b-4 border-black active:scale-95 active:border-opacity-10 bg-blue-900 text-white flex ml-auto">
-              send
-            </button>
+            <button className="send-button">send</button>
           </div>
         </div>
       </form>

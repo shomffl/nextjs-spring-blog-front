@@ -28,10 +28,17 @@ const Show = (props: any) => {
 
   return (
     <Layout>
-      <h1>{data.title}</h1>
-      <p>{data.body}</p>
-      <Link href={`/posts/edit/${data.id}`}>編集</Link>
-      <Link href={`/`}>ホームへ戻る</Link>
+      <Link className="underline" href={`/`}>
+        ホームへ戻る
+      </Link>
+
+      <div className="px-20 py-10 flex flex-col gap-2">
+        <h1 className="px-4 rounded shadow bg-white w-max">{data.title}</h1>
+        <p className="px-4 rounded shadow bg-white w-max">{data.body}</p>
+        <Link className="send-button" href={`/posts/edit/${data.id}`}>
+          edit
+        </Link>
+      </div>
     </Layout>
   );
 };
